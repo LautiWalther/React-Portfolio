@@ -5,7 +5,7 @@ function Profile() {
     
     return (
         <>
-            <h3>Welcome {auth.user}</h3>
+            <h3>Welcome {auth.user.nickname}</h3>
         </>
     )
 }

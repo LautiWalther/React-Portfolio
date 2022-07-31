@@ -4,6 +4,8 @@ import Post from './pages/Post';
 import Navbar from './components/Navbar';
 import Login from './pages/Admin';
 import Profile from './pages/Profile';
+import RequireAuth from './components/RequireAuth';
+import Logout from './pages/Logout';
 
 import {
   BrowserRouter as Router,
@@ -11,7 +13,7 @@ import {
   Routes
 } from "react-router-dom";
 import Home from './pages/Home';
-import { AuthProvider } from './components/auth';
+import { AuthProvider} from './components/auth';
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
             <Route exact path="/posts" element={<ListProjects/>} />
             <Route path="/post/:postId" element={<Post/>} />
             <Route exact path="/admin" element={<Login />} />
-            <Route exact path="/profile" element={<Profile />} />
+            <Route exact path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+            <Route exact path="/logout" element={<RequireAuth><Logout /></RequireAuth>}/>
           </Routes>
       </Router>
     </AuthProvider>

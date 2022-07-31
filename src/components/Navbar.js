@@ -17,17 +17,26 @@ function Navbar() {
                 <li>
                     <Link to='/posts'>Posts</Link>
                 </li>
-            </ul>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <Link to='/contact'>Contact</Link>
                 </li>
                 <li>
                     <Link to='/projects'>Portfolio</Link>
                 </li>
+            </ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     {
-                        auth.user ? <Link to='/profile'>Profile</Link> : <Link to='/admin'>Login</Link>
+                        !auth.user ? <Link to='/admin'>Login</Link> : ''
+                    }
+                    
+                    {
+                        auth.user ? <Link to='/logout'>Logout</Link> : ''
+                    }
+                </li>
+                <li>
+                    {
+                        auth.user ? <Link to='/profile'>Profile</Link> : ''
                     }
                 </li>
             </ul>
