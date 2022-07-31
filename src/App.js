@@ -3,6 +3,7 @@ import ListProjects from './components/ListProjects';
 import Post from './pages/Post';
 import Navbar from './components/Navbar';
 import Login from './pages/Admin';
+import Profile from './pages/Profile';
 
 import {
   BrowserRouter as Router,
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/posts" element={<ListProjects/>} />
             <Route path="/post/:postId" element={<Post/>} />
             <Route exact path="/admin" element={<Login />} />
+            <Route exact path="/profile" element={<Profile />} />
           </Routes>
       </Router>
     </AuthProvider>

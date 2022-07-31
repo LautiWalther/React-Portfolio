@@ -27,9 +27,7 @@ function Navbar() {
                 </li>
                 <li>
                     {
-                        !auth.user && (
-                            <Link to='/admin'>Login</Link>
-                        )
+                        auth.user ? <Link to='/profile'>Profile</Link> : <Link to='/admin'>Login</Link>
                     }
                 </li>
             </ul>
