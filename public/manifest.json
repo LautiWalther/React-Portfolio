@@ -8,6 +8,11 @@
       "type": "image/x-icon"
     },
     {
+      "src": "home_bg_my.jpg",
+      "sizes": "3840x2160",
+      "type": "image/jpg"
+    },
+    {
       "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
