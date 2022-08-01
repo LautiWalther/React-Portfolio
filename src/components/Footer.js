@@ -1,6 +1,8 @@
+import './Footer.css';
+
 function Footer() {
     return (
-        <footer id="footer">
+        <footer id="footer" class='center'>
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-10">
@@ -26,7 +28,7 @@ function Footer() {
                                 <a target="_blank" href="https://www.facebook.com/lauti.walther">
                                     <span class="fa-stack fa-lg">
                                         <i class="facebook fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa-brands fa-facebook fa-stack-1x fa-inverse"></i>
+                                        <i class="fa-brands fa-facebook-f fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
                             </li>
@@ -34,7 +36,7 @@ function Footer() {
                                 <a target="_blank" href="mailto:lautarowalther@gmail.com">
                                     <span class="fa-stack fa-lg">
                                         <i class="gmail fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa-brands fa-at fa-stack-1x fa-inverse"></i>
+                                        <i class="fa-solid fa-at fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
                             </li>

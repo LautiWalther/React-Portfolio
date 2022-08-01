@@ -1,20 +1,89 @@
 .copy_name {
     font-weight: bold;
+    color: #6c757d;
+}
 
+.text-muted {
+    font-size: 14px;
+    color: #6c757d !important;
+    font-family: Lora,Times New Roman,serif;
 }
 
 footer {
     background-color: #212529;
     padding: 50px 0 65px;
     display: block;
+    font-size: 1.2em;
 }
 
 .list-inline-item {
-
     margin-right: .5rem;
     display: inline-block;
 
 }
 .list-inline-item a {
     color: #212529
+}
+
+footer {background-color: #212529;}
+
+footer ul li i{transition: 0.5s;}
+
+footer ul li:hover i.instagram{animation-name:insta;animation-duration: 10s;animation-iteration-count: infinite;}
+
+footer ul li:hover i.whatsapp{color:#075e54;}
+
+footer ul li:hover i.gmail{color:#ea4335;}
+
+footer ul li:hover i.facebook{color: #3b5998;}
+
+footer ul li:hover i.telegram{color: #0088cc;}
+
+footer ul li i{color: transparent; background-color: transparent;}
+
+
+
+
+
+@keyframes insta {
+
+  0% {color:#405de6;}
+
+  10% {color:#5851db;}
+
+  20% {color:#833ab4;}
+
+  30% {color:#c13584;}
+
+  40% {color:#e1306c;}
+
+  50% {color:#fd1d1d;}
+
+  60% {color:#f56040;}
+
+  70% {color:#f77737;}
+
+  80% {color:#fcaf45;}
+
+  90% {color:#ffdc80;}
+
+  100% {color:#405de6;}
+
+}
+
+@keyframes whats {
+
+  0%{color:#25d366;}
+
+  50%{color:#075e54;}
+
+  75%{color:#25d366;}
+
+  100%{color:#075e54;}
+
+}
+*{transition: 1s;}
+
+a.scroll:hover {
+  cursor: pointer;
 }

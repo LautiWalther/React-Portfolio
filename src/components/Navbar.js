@@ -4,16 +4,29 @@ import {
 import { useAuth } from "./auth";
 import M from "materialize-css";
 
+import './Navbar.css';
+
 function Navbar() {
     const auth = useAuth();
     
     document.addEventListener('DOMContentLoaded', () => {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);
+
+        document.addEventListener('scroll', () => {
+            if((window.pageYOffset) > 300) {
+                document.getElementById('navbar-fixed').classList.add('teal');
+                document.getElementById('navbar-fixed').classList.remove('transparent');
+            }else {
+                document.getElementById('navbar-fixed').classList.add('transparent');
+                document.getElementById('navbar-fixed').classList.remove('teal');
+            }
+        })
     });
+    
     return (
         <>
-            <nav class="teal">
+            <nav class="transparent" id="navbar-fixed">
                 <div class="nav-wrapper container">
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <a href="#" class="brand-logo center">Lautaro</a>
