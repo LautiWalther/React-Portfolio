@@ -80,3 +80,6 @@
     background-color: #f8d7da;
     width: 100%;
 }
+.hidden {
+	display: none;
+}

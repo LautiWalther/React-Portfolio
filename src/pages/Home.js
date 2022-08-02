@@ -1,7 +1,7 @@
 import M from "materialize-css";
 import './Home.css';
-import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import link_public from '../components/public';
 
 function Home() {
 
@@ -14,17 +14,11 @@ function Home() {
     });
     return (
         <>
-            <div class="hero-image">
-                <div class="hero-text">
-                    <h1>Lautaro Walther</h1>
-                    <p class='flow-text'>Junior React Developer</p>
-                    <Link to='/contact' class='btn blue-grey lighten-5 black-text waves-effect' style={{'fontWeight': 'bold'}}>Talk with Me</Link>
-                </div>
-            </div>
+            <Hero image={ link_public('/home_bg_my.jpg') } title='Lautaro Walther' subtitle='Junior React Developer' btn="Let's Talk!"></Hero>
             <hr />
             <div class="row container">
                 <div class="col s4">
-                    <img src={'http://' + window.location.host + '/yo.jpg'} class="my_image" alt="" />
+                    <img src={ link_public('/yo.jpg') } class="my_image" alt="" />
                 </div>
                 <div class="col s8">
                     <p class="history-text">Mi nombre es Lautaro Walther y tengo 19 años. Me considero un chico ambicioso, apasionado por la informatica y la educación.</p>
@@ -35,7 +29,6 @@ function Home() {
                     <p class="history-text">Mi objetivo es impactar de manera beneficiosa en la gente, actualizando su estilo de vida y mejorando potencialmente sus habilidades de manejar la tecnologia. ¿Te sumas?</p>
                 </div>
             </div>
-            <Footer></Footer>
         </>
     )
 }

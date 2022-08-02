@@ -23,6 +23,7 @@ function Login() {
         data.append('user', user);
         data.append('password', password);
         document.getElementById('login_btn').classList.add('disabled');
+        document.getElementById('error-box').classList.add('hidden');
 
         fetch('http://localhost/portfolio-backend/user/login.php', {
             method: 'POST',
@@ -32,8 +33,9 @@ function Login() {
         })
         .then(response => response.json()).then(response => {
             if(response.error) {
-                console.log(response.error);
                 document.getElementById('login_btn').classList.remove('disabled');
+                document.getElementById('error-box').classList.remove('hidden');
+                document.getElementById('error').innerText = response.error;
             }else {
                 auth.login(response);
                 navigate('/', { replace: true });
@@ -50,8 +52,8 @@ function Login() {
                             Sign In
                         </span>
                     </div>
-                    <div class='center' id="error-box">
-                        <span id="error">Error</span>
+                    <div class='center hidden' id="error-box">
+                        <span id="error"></span>
                     </div>
                     <form class="login100-form validate-form">
                         

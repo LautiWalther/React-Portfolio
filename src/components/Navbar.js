@@ -4,6 +4,8 @@ import {
 import { useAuth } from "./auth";
 import M from "materialize-css";
 
+import link_public from "./public";
+
 import './Navbar.css';
 
 function Navbar() {
@@ -69,7 +71,7 @@ function Navbar() {
                             <img src='' />
                         </div>
                         <a href="#user">
-                            <img class="circle" src={'http://' + window.location.host + '/yo.jpg'} />
+                            <img class="circle" src={ link_public('/yo.jpg') } />
                         </a>
                         <a href="#name">
                             <span class="white-text name">Lautaro Walther</span>
