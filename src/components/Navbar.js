@@ -6,7 +6,7 @@ import M from "materialize-css";
 
 import link_public from "./public";
 
-import './Navbar.css';
+import './css/Navbar.css';
 
 function Navbar() {
     const auth = useAuth();

@@ -3,7 +3,7 @@ import { useAuth } from '../components/auth';
 import { useNavigate } from "react-router-dom";
 import M from "materialize-css";
 
-import './Admin.css';
+import './css/Admin.css';
 
 function Login() {
     const [user, setUser] = useState('');

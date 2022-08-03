@@ -8,6 +8,8 @@ import RequireAuth from './components/RequireAuth';
 import RequireNotAuth from './components/RequireNotAuth';
 import Logout from './pages/Logout';
 
+import M from 'materialize-css';
+
 import {
   BrowserRouter as Router,
   Route,

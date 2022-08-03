@@ -1,5 +1,5 @@
 import M from "materialize-css";
-import './Home.css';
+import './css/Home.css';
 import Hero from "../components/Hero";
 import link_public from '../components/public';
 

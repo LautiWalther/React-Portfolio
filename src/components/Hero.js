@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Hero.css';
+import './css/Hero.css';
 
 
 export default function Hero(props) {
@@ -10,6 +10,7 @@ export default function Hero(props) {
     }
     return (
         <div class="hero-image" style={styles.hero}>
+            <div class="overlay"></div>
             <div class="hero-text">
                 <h1>{props.title}</h1>
                 <p class='flow-text'>{props.subtitle}</p>

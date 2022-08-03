@@ -12,9 +12,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: #fff;
   }
   .hero-text h1 {
     font-weight: bold;
     font-size: 6em;
+  }
+  .hero-text p {
+    color: #fff
+  }
+  .hero-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: .5;
   }

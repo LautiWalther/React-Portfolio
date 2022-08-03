@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import './SimplePost.css';
+import './css/SimplePost.css';
 
 export default function Post(props) {
     let date = props.date.split(' ')[0];
