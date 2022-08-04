@@ -64,8 +64,7 @@ function Post() {
             body: data
         })
         setEditing(false);
-        console.log(newPost);
-        //setReload(reload += 1);
+        setReload(reload += 1);
         editor.destroy()
     }
 
