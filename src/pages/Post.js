@@ -51,18 +51,16 @@ function Post() {
         var data = new FormData();
         data.append('token', auth.user.token);
         data.append('user', auth.user.id);
-        data.append('image', [...newPost.image]);
+        if(newPost.image) data.append('image', newPost.image[0]);
         let objToSend = {
             text: newPost.text ? newPost.text : post.text,
             title: newPost.title ? newPost.title : post.title,
-            subtitle: newPost.subtitle ? newPost.subtitle : post.subtitle,
-            image: post.image
+            subtitle: newPost.subtitle ? newPost.subtitle : post.subtitle
         }
         data.append('post', JSON.stringify(objToSend));
+        data.forEach(z => console.log(z));
         const response = await fetch(`http://localhost/portfolio-backend/post/edit.php?post=${postId}`, {
             method: 'POST',
-            contentType: false,
-            processData: false,
             body: data
         })
         setEditing(false);
@@ -91,7 +89,7 @@ function Post() {
 
     return (
         <>
-            <Hero image={post.image ? link_public('/'+post.image) :link_public('/bg_not_found.jpg')} title={post.title} subtitle={post.subtitle} btn={false} />
+            <Hero image={post.image ? 'http://localhost/portfolio-backend/images/'+post.image :link_public('/bg_not_found.jpg')} title={post.title} subtitle={post.subtitle} btn={false} />
             <div className={!editing ? 'hidden' : 'col s3 center'}>
                 <h2>Title: <input type='text' onChange={e => setNewPost({title: e.target.value, subtitle: newPost.subtitle, text: newPost.text, image: newPost.image})} value={newPost.title ? newPost.title : post.title}/></h2>
                 <h3>Subtitle: <input type='text' onChange={ e => setNewPost({subtitle: e.target.value, title: newPost.title, text: newPost.text, image: newPost.image}) } value={newPost.subtitle ? newPost.subtitle : post.subtitle} /></h3>
@@ -109,7 +107,7 @@ function Post() {
             </div>
             <article>
                 <div className="row">
-                    <div className="col s4 offset-s4 editable" dangerouslySetInnerHTML={{__html: post.text}} onInput={ e => setNewPost({text: e.target.textContent, subtitle: newPost.subtitle, title: newPost.title, image: newPost.image}) }>
+                    <div className="col s4 offset-s4 editable" dangerouslySetInnerHTML={{__html: post.text}} onInput={ e => setNewPost({text: e.target.innerHTML, subtitle: newPost.subtitle, title: newPost.title, image: newPost.image}) }>
                     </div>
                 </div>
             </article>
