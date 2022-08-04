@@ -10,9 +10,10 @@ import './css/Navbar.css';
 
 function Navbar() {
     const auth = useAuth();
-    
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems);
+    document.addEventListener('DOMContentLoaded', () => {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    })
 
     document.addEventListener('scroll', () => {
         if((window.pageYOffset) > 300) {
@@ -52,11 +53,6 @@ function Navbar() {
                             
                             {
                                 auth.user ? <Link to='/logout'>Logout</Link> : ''
-                            }
-                        </li>
-                        <li>
-                            {
-                                auth.user ? <Link to='/profile'>Profile</Link> : ''
                             }
                         </li>
                     </ul>
@@ -101,12 +97,6 @@ function Navbar() {
                     
                     {
                         auth.user ? <Link className="waves-effect" to='/logout'><i className="material-icons">logout</i>Logout</Link> : ''
-                    }
-                </li>
-                <li>
-                    {
-                        
-                        auth.user ? <Link className="waves-effect" to='/profile'><i className="material-icons">person</i>Profile</Link> : ''
                     }
                 </li>
             </ul>

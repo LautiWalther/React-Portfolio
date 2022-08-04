@@ -3,7 +3,6 @@ import ListProjects from './components/ListProjects';
 import Post from './pages/Post';
 import Navbar from './components/Navbar';
 import Login from './pages/Admin';
-import Profile from './pages/Profile';
 import RequireAuth from './components/RequireAuth';
 import RequireNotAuth from './components/RequireNotAuth';
 import Logout from './pages/Logout';
@@ -32,7 +31,6 @@ function App() {
             <Route exact path="/posts" element={<Posts />} />
             <Route path="/post/:postId" element={<Post />} />
             <Route exact path="/admin" element={<RequireNotAuth><Login /></RequireNotAuth>} />
-            <Route exact path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
             <Route exact path="/logout" element={<RequireAuth><Logout /></RequireAuth>}/>
           </Routes>
           <Footer></Footer>

@@ -106,7 +106,7 @@ function Post() {
             </div>
             <article>
                 <div className="row">
-                    <div className="col s4 offset-s4 editable" dangerouslySetInnerHTML={{__html: post.text}} onInput={ e => setNewPost({text: e.target.innerHTML, subtitle: newPost.subtitle, title: newPost.title, image: newPost.image}) }>
+                    <div className="col s6 offset-s3 editable" dangerouslySetInnerHTML={{__html: post.text}} onInput={ e => setNewPost({text: e.target.innerHTML, subtitle: newPost.subtitle, title: newPost.title, image: newPost.image}) }>
                     </div>
                 </div>
             </article>
