@@ -3,3 +3,7 @@ p {
     color: #212529;
     font-family: Lora,Times New Roman,serif;
 }
+
+.hidden {
+    display: none;
+}

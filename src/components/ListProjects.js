@@ -21,15 +21,17 @@ function ListProjects() {
         link: 'https://github.com/LautiWalther/BotListProject',
         image: ''
     }]
+    var i = 0;
     return (
         <>
             <Hero image={ link_public('/portfolio.jpg') } title='Portfolio' subtitle='' btn={false}></Hero>
 
-            <div class='row'>
+            <div className='row'>
                 {
                     list.map(project => {
+                        i++
                         return (
-                            <Card image={project.image} title={project.title} link={project.link} description={project.description}></Card>
+                            <Card image={project.image} title={project.title} link={project.link} description={project.description} key={i}></Card>
                         )
                     })
                 }

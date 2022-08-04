@@ -12,10 +12,13 @@ import './css/Post.css';
 
 function Post() {
     const [post, setPost] = useState({});
+    const [newPost, setNewPost] = useState({});
     const [editing, setEditing] = useState(false);
     var [reload, setReload] = useState(0);
     const [editor, setEditor] = useState(null);
+
     let { postId } = useParams();
+
     useEffect(() => {
         const getPost = async () => {
             let isReady = false;
@@ -28,14 +31,13 @@ function Post() {
             return () => isReady = true;
         }
         getPost();
+    
     }, [reload])
+    
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems);
 
     const auth = useAuth();
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.fixed-action-btn');
-        var instances = M.FloatingActionButton.init(elems);
-    });
     
     const publishPost = () => {
 
@@ -45,10 +47,27 @@ function Post() {
 
     }
 
-    const saveContent = () => {
+    const saveContent = async () => {
+        var data = new FormData();
+        data.append('token', auth.user.token);
+        data.append('user', auth.user.id);
+        data.append('image', [...newPost.image]);
+        let objToSend = {
+            text: newPost.text ? newPost.text : post.text,
+            title: newPost.title ? newPost.title : post.title,
+            subtitle: newPost.subtitle ? newPost.subtitle : post.subtitle,
+            image: post.image
+        }
+        data.append('post', JSON.stringify(objToSend));
+        const response = await fetch(`http://localhost/portfolio-backend/post/edit.php?post=${postId}`, {
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            body: data
+        })
         setEditing(false);
-        setReload(reload+=1);
-        console.log(post);
+        console.log(newPost);
+        //setReload(reload += 1);
         editor.destroy()
     }
 
@@ -73,25 +92,38 @@ function Post() {
     return (
         <>
             <Hero image={post.image ? link_public('/'+post.image) :link_public('/bg_not_found.jpg')} title={post.title} subtitle={post.subtitle} btn={false} />
+            <div className={!editing ? 'hidden' : 'col s3 center'}>
+                <h2>Title: <input type='text' onChange={e => setNewPost({title: e.target.value, subtitle: newPost.subtitle, text: newPost.text, image: newPost.image})} value={newPost.title ? newPost.title : post.title}/></h2>
+                <h3>Subtitle: <input type='text' onChange={ e => setNewPost({subtitle: e.target.value, title: newPost.title, text: newPost.text, image: newPost.image}) } value={newPost.subtitle ? newPost.subtitle : post.subtitle} /></h3>
+
+                <div className="file-field input-field">
+                    <div className="btn">
+                        <span>Imagen</span>
+                        <input type="file" onChange={ e => setNewPost({subtitle: newPost.subtitle, title: newPost.title, text: newPost.text, image: [...e.target.files]}) } />
+                    </div>
+                    <div className="file-path-wrapper">
+                        <input className="file-path validate" type="text" />
+                    </div>
+                </div>
+            <hr />
+            </div>
             <article>
-                <div class="row">
-                    <div class="col s4 offset-s4 editable" dangerouslySetInnerHTML={{__html: post.text}} onChange={e => setPost({
-                        text: e.target.value
-                    })}>
+                <div className="row">
+                    <div className="col s4 offset-s4 editable" dangerouslySetInnerHTML={{__html: post.text}} onInput={ e => setNewPost({text: e.target.textContent, subtitle: newPost.subtitle, title: newPost.title, image: newPost.image}) }>
                     </div>
                 </div>
             </article>
             {
                 auth.user ? (
-                    <div class="fixed-action-btn">
-                        <a class="btn-floating btn-large green" onClick={editing ? saveContent : emptyFunction}>
-                            <i class="large material-icons">{editing ? 'save' : 'settings'}</i>
+                    <div className="fixed-action-btn">
+                        <a className="btn-floating btn-large green" onClick={editing ? saveContent : emptyFunction}>
+                            <i className="large material-icons">{editing ? 'save' : 'settings'}</i>
                         </a>
                         <ul style={editing ? {display:'none'} : {display:'block'}}>
-                            <li><a class="btn-floating red" onClick={ deletePost }><i class="material-icons">delete</i></a></li>
-                            <li><a class="btn-floating yellow darken-1" onClick={ editContent }><i class="material-icons">mode_edit</i></a></li>
-                            <li><a class="btn-floating green" onClick={ publishPost }><i class="material-icons">published_with_changes</i></a></li>
-                            <li><a class="btn-floating blue" onClick={ unpublishPost }><i class="material-icons">unpublished</i></a></li>
+                            <li><a className="btn-floating red" onClick={ deletePost }><i className="material-icons">delete</i></a></li>
+                            <li><a className="btn-floating yellow darken-1" onClick={ editContent }><i className="material-icons">mode_edit</i></a></li>
+                            <li><a className="btn-floating green" onClick={ publishPost }><i className="material-icons">published_with_changes</i></a></li>
+                            <li><a className="btn-floating blue" onClick={ unpublishPost }><i className="material-icons">unpublished</i></a></li>
                         </ul>
                     </div>
                 ) : ''

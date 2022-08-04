@@ -32,7 +32,7 @@ function Posts() {
     return (
         <>
             <Hero image={ link_public('/posts.jpg') }  title='Posts' subtitle='A place where i express my thoughts' btn={false} />
-            <div class="container" id="list-posts">
+            <div className="container" id="list-posts">
                 {listposts.map(post => {
                     return (
                         <SimplePost key={post.id} id={post.id} title={post.title} subtitle={post.subtitle} date={post.uploaded} />

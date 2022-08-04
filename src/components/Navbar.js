@@ -11,28 +11,26 @@ import './css/Navbar.css';
 function Navbar() {
     const auth = useAuth();
     
-    document.addEventListener('DOMContentLoaded', () => {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
 
-        document.addEventListener('scroll', () => {
-            if((window.pageYOffset) > 300) {
-                document.getElementById('navbar-fixed').classList.add('teal');
-                document.getElementById('navbar-fixed').classList.remove('transparent');
-            }else {
-                document.getElementById('navbar-fixed').classList.add('transparent');
-                document.getElementById('navbar-fixed').classList.remove('teal');
-            }
-        })
-    });
+    document.addEventListener('scroll', () => {
+        if((window.pageYOffset) > 300) {
+            document.getElementById('navbar-fixed').classList.add('teal');
+            document.getElementById('navbar-fixed').classList.remove('transparent');
+        }else {
+            document.getElementById('navbar-fixed').classList.add('transparent');
+            document.getElementById('navbar-fixed').classList.remove('teal');
+        }
+    })
     
     return (
         <>
-            <nav class="transparent" id="navbar-fixed">
-                <div class="nav-wrapper container">
-                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <a href="#" class="brand-logo center">Lautaro</a>
-                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <nav className="transparent" id="navbar-fixed">
+                <div className="nav-wrapper container">
+                    <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                    <a href="#" className="brand-logo center">Lautaro</a>
+                    <ul id="nav-mobile" className="left hide-on-med-and-down">
                         <li>
                             <Link to='/'>Home</Link>
                         </li>
@@ -46,7 +44,7 @@ function Navbar() {
                             <Link to='/projects'>Portfolio</Link>
                         </li>
                     </ul>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
                             {
                                 !auth.user ? <Link to='/admin'>Login</Link> : ''
@@ -64,51 +62,51 @@ function Navbar() {
                     </ul>
                 </div>
             </nav>
-            <ul id="slide-out" class="sidenav teal">
+            <ul id="slide-out" className="sidenav teal">
                 <li>
-                    <div class="user-view">
-                        <div class="background">
+                    <div className="user-view">
+                        <div className="background">
                             <img src='' />
                         </div>
                         <a href="#user">
-                            <img class="circle" src={ link_public('/yo.jpg') } />
+                            <img className="circle" src={ link_public('/yo.jpg') } />
                         </a>
                         <a href="#name">
-                            <span class="white-text name">Lautaro Walther</span>
+                            <span className="white-text name">Lautaro Walther</span>
                         </a>
                         <a href="#email">
-                            <span class="white-text email">lautarowalther@gmail.com</span>
+                            <span className="white-text email">lautarowalther@gmail.com</span>
                         </a>
                     </div>
                 </li>
                 <li>
-                    <Link class="waves-effect" to='/'><i class="material-icons">house</i>Home</Link>
+                    <Link className="waves-effect" to='/'><i className="material-icons">house</i>Home</Link>
                 </li>
                 <li>
-                    <Link class="waves-effect" to='/posts'><i class="material-icons">list</i>Posts</Link>
+                    <Link className="waves-effect" to='/posts'><i className="material-icons">list</i>Posts</Link>
                 </li>
                 <li>
-                    <Link class="waves-effect" to='/contact'><i class="material-icons">alternate_email</i>Contact</Link>
+                    <Link className="waves-effect" to='/contact'><i className="material-icons">alternate_email</i>Contact</Link>
                 </li>
                 <li>
-                    <Link class="waves-effect" to='/portfolio'><i class="material-icons">work</i>Portfolio</Link>
+                    <Link className="waves-effect" to='/portfolio'><i className="material-icons">work</i>Portfolio</Link>
                 </li>
                 <li>
-                    <div class="divider"></div>
+                    <div className="divider"></div>
                 </li>
                 <li>
                     {
-                        !auth.user ? <Link class="waves-effect" to='/admin'><i class="material-icons">login</i>Login</Link> : ''
+                        !auth.user ? <Link className="waves-effect" to='/admin'><i className="material-icons">login</i>Login</Link> : ''
                     }
                     
                     {
-                        auth.user ? <Link class="waves-effect" to='/logout'><i class="material-icons">logout</i>Logout</Link> : ''
+                        auth.user ? <Link className="waves-effect" to='/logout'><i className="material-icons">logout</i>Logout</Link> : ''
                     }
                 </li>
                 <li>
                     {
                         
-                        auth.user ? <Link class="waves-effect" to='/profile'><i class="material-icons">person</i>Profile</Link> : ''
+                        auth.user ? <Link className="waves-effect" to='/profile'><i className="material-icons">person</i>Profile</Link> : ''
                     }
                 </li>
             </ul>
