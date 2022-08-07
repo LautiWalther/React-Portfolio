@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../components/auth";
 import Hero from "../components/Hero";
 import link_public from "../components/public";
@@ -16,6 +16,8 @@ function Post() {
     const [editing, setEditing] = useState(false);
     var [reload, setReload] = useState(0);
     const [editor, setEditor] = useState(null);
+
+    const navigate = useNavigate();
 
     let { postId } = useParams();
 
@@ -39,12 +41,18 @@ function Post() {
 
     const auth = useAuth();
     
-    const publishPost = () => {
-
-    }
-
-    const unpublishPost = () => {
-
+    const changeVisibility = async () => {
+        var data = new FormData();
+        data.append('token', auth.user.token);
+        data.append('user', auth.user.id);
+        data.append('post', postId);
+        data.append('visibility', ~parseInt(post.hidden));
+        const response = await fetch('http://localhost/portfolio-backend/post/visibility.php', {
+            method: 'POST',
+            body: data
+        })
+        
+        setReload(reload += 1);
     }
 
     const saveContent = async () => {
@@ -68,23 +76,25 @@ function Post() {
         editor.destroy()
     }
 
-    const saveImage = () => {
-
-    }
-
     const editContent = () => {
         var edit = new MediumEditor('.editable');
         setEditor(edit);
         setEditing(true);
     }
 
-    const deletePost = () => {
-
+    const deletePost = async () => {
+        var data = new FormData();
+        data.append('token', auth.user.token);
+        data.append('user', auth.user.id);
+        data.append('post', postId);
+        const response = await fetch(`http://localhost/portfolio-backend/post/delete.php`, {
+            method: 'POST',
+            body: data
+        })
+        navigate('/posts', { replace: true });
     }
 
-    const emptyFunction = () => {
-
-    }
+    const emptyFunction = () => {}
 
     return (
         <>
@@ -119,8 +129,7 @@ function Post() {
                         <ul style={editing ? {display:'none'} : {display:'block'}}>
                             <li><a className="btn-floating red" onClick={ deletePost }><i className="material-icons">delete</i></a></li>
                             <li><a className="btn-floating yellow darken-1" onClick={ editContent }><i className="material-icons">mode_edit</i></a></li>
-                            <li><a className="btn-floating green" onClick={ publishPost }><i className="material-icons">published_with_changes</i></a></li>
-                            <li><a className="btn-floating blue" onClick={ unpublishPost }><i className="material-icons">unpublished</i></a></li>
+                            <li><a className='btn-floating blue' onClick={ changeVisibility }><i className="material-icons">{ !parseInt(post.hidden) ? 'visibility' : 'visibility_off' }</i></a></li>
                         </ul>
                     </div>
                 ) : ''
