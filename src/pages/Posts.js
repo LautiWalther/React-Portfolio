@@ -17,7 +17,7 @@ function Posts() {
         
         var finished = false;
 
-        const fetchPosts = async () => {
+        const fetchPostsnotLogged = async () => {
             const data = await fetch('http://localhost/portfolio-backend/post/read.php', {
                 method: 'GET',
                 contentType: false,
@@ -29,8 +29,27 @@ function Posts() {
                 setPosts(json);
             }
         }
+
+        const fetchPostsLogged = async () => {
+            var fetchData = new FormData();
+            fetchData.append('user', auth.user.id);
+            fetchData.append('token', auth.user.token);
+            const data = await fetch('http://localhost/portfolio-backend/post/read.php', {
+                method: 'POST',
+                body: fetchData
+            });
+            const json = await data.json();
+
+            if(!finished) {
+                if(json.error){
+                    alert(json.error);
+                }else {
+                    setPosts(json);
+                }
+            }
+        }
         
-        fetchPosts().catch(console.error);
+        auth.user ? fetchPostsLogged().catch(console.error) : fetchPostsnotLogged().catch(console.error);
 
         return () => finished = true;
     }, [])
@@ -56,7 +75,7 @@ function Posts() {
             <div className="container" id="list-posts">
                 {listposts.map(post => {
                     return (
-                        <SimplePost key={post.id} id={post.id} title={post.title} subtitle={post.subtitle} date={post.uploaded} />
+                        <SimplePost key={post.id} id={post.id} title={post.title} subtitle={post.subtitle} date={post.uploaded} hidden={post.hidden} />
                     )
                 })}
             </div>
