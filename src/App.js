@@ -1,5 +1,5 @@
 import './App.css';
-import ListProjects from './components/ListProjects';
+import ListProjects from './pages/ListProjects';
 import Post from './pages/Post';
 import Navbar from './components/Navbar';
 import Login from './pages/Admin';
@@ -18,6 +18,7 @@ import Home from './pages/Home';
 import { AuthProvider} from './components/auth';
 import Posts from './pages/Posts';
 import Footer from './components/Footer';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/projects" element={<ListProjects/>} />
-            <Route exact path="/contact" element={<ListProjects/>} />
+            <Route exact path="/contact" element={<Contact/>} />
             <Route exact path="/posts" element={<Posts />} />
             <Route path="/post/:postId" element={<Post />} />
             <Route exact path="/admin" element={<RequireNotAuth><Login /></RequireNotAuth>} />

@@ -1,7 +1,7 @@
-import Hero from "./Hero";
-import link_public from "./public";
+import Hero from "../components/Hero";
+import link_public from "../components/public";
 import M from "materialize-css";
-import Card from "./Card";
+import Card from "../components/Card";
 
 function ListProjects() {
     let list = [{
