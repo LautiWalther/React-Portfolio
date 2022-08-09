@@ -58,7 +58,7 @@ const Contact = () => {
                             <input required id="name" type="text" className="validate" onChange={e => setData({...data,
                                 name: e.target.value
                             })} />
-                            <label for="name">Name</label>
+                            <label htmlFor="name">Name</label>
                         </div>
                     </div>
                     <div className="col s6">
@@ -67,7 +67,7 @@ const Contact = () => {
                             <input required id="email" type="email" className="validate" onChange={e => setData({...data,
                                 email: e.target.value
                             })} />
-                            <label for="email">Mail</label>
+                            <label htmlFor="email">Mail</label>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ const Contact = () => {
                             <input required id="phone" type="tel" className="validate" onChange={e => setData({...data,
                                 phone: e.target.value
                             })} />
-                            <label for="phone">Phone</label>
+                            <label htmlFor="phone">Phone</label>
                         </div>
                     </div>
                     <div className="col s6">
@@ -87,7 +87,7 @@ const Contact = () => {
                             <input required id="subject" type="text" className="validate" onChange={e => setData({...data,
                                 subject: e.target.value
                             })} />
-                            <label for="subject">Subject</label>
+                            <label htmlFor="subject">Subject</label>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const Contact = () => {
                             <textarea id="message" className="materialize-textarea" onChange={e => setData({...data,
                                 message: e.target.value
                             })} required></textarea>
-                            <label for="message">Message</label>
+                            <label htmlFor="message">Message</label>
                         </div>
                     </div>
                 </div>

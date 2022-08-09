@@ -39,7 +39,7 @@ function ListProjects() {
                 {
                     list.map(project => {
                         return (
-                            <Card image={project.image} title={project.title} link={project.link} description={project.description} key={project.id}></Card>
+                            <Card image={project.image} title={project.title} link={project.link} description={project.description} key={project.id} id={project.id} />
                         )
                     })
                 }

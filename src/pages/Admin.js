@@ -60,13 +60,13 @@ function Login() {
                         <div className="input-field col s12">
                             <i className="material-icons prefix">account_circle</i>
                             <input id="username" type="text" onChange={e => setUser(e.target.value)} />
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                         </div>
 
                         <div className="input-field col s12">
                             <i className="material-icons prefix">key</i>
                             <input id="password" type="password" onChange={e => setPassword(e.target.value)}/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                         </div>
 
                         <div className="container-login100-form-btn">
